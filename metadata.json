@@ -1,0 +1,6 @@
+{
+  "name": "VeriMail Identity & Auth Console",
+  "description": "Firebase Authentication portal for user login, registration, email verification workflows, and primary email lifecycle management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
