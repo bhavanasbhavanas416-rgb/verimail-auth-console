@@ -11,8 +11,9 @@ Full-Stack Developer passionate about building robust, modern web applications, 
 
 An enterprise-ready **Identity & Authentication Console** featuring dual-engine authentication, automated email verification loops, custom out-of-band action handlers, and primary email lifecycle management.
 
+- 🚀 **Live Production Server**: [http://localhost:5000/](http://localhost:5000/) (and [http://10.164.1.1:5000/](http://10.164.1.1:5000/))
 - 🌐 **Live Local Network Preview**: [http://10.164.1.1:3000/](http://10.164.1.1:3000/)
-- 💻 **Localhost Preview**: [http://localhost:3000/](http://localhost:3000/)
+- 💻 **Development Preview**: [http://localhost:3000/](http://localhost:3000/)
 - 📦 **Source Code Repository**: [bhavanasbhavanas416-rgb/verimail-auth-console](https://github.com/bhavanasbhavanas416-rgb/verimail-auth-console)
 
 ### ✨ Core Capabilities

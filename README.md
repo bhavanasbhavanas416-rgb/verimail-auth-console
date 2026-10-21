@@ -2,44 +2,53 @@
 
 [![GitHub Profile](https://img.shields.io/badge/Developer-bhavanasbhavanas416--rgb-181717.svg?logo=github&logoColor=white)](https://github.com/bhavanasbhavanas416-rgb)
 [![Repository](https://img.shields.io/badge/Repository-verimail--auth--console-0969DA.svg?logo=github)](https://github.com/bhavanasbhavanas416-rgb/verimail-auth-console)
+[![Localhost:5000](https://img.shields.io/badge/Production_URL-http%3A%2F%2Flocalhost%3A5000%2F-emerald.svg)](http://localhost:5000/)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB.svg?logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express-4.x-000000.svg?logo=express&logoColor=white)](https://expressjs.com/)
 [![Vite](https://img.shields.io/badge/Vite-8.x-646CFF.svg?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Firebase](https://img.shields.io/badge/Firebase-Authentication-FFCA28.svg?logo=firebase&logoColor=black)](https://firebase.google.com/)
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 
-An enterprise-grade **Identity, Authentication & Email Lifecycle Console** engineered with **React 19**, **TypeScript 5**, **Tailwind CSS 4**, **Framer Motion**, and the **Firebase Authentication SDK (v12)**. 
+An enterprise-grade **Identity, Authentication & Email Lifecycle Console** engineered with **React 19**, **TypeScript 5**, **Tailwind CSS 4**, **Framer Motion**, **Express.js**, and the **Firebase Authentication SDK (v12)**. 
 
-This platform serves as a modern identity administration portal, featuring automated email verification loops, custom out-of-band action handlers, secondary alias management, cryptographic re-authentication workflows, and real-time security audit trails.
+This platform serves as a production-grade identity administration portal, featuring automated email verification loops, custom out-of-band action handlers, secondary alias management, cryptographic re-authentication workflows, and real-time security audit trails.
 
 ---
 
 ## 🌐 Live Application Access URLs
 
-The application server binds directly to `0.0.0.0:3000`, providing immediate access across both local development environments and local area networks:
+The application can be accessed via development or production modes across localhost and local area networks:
 
-| Access Type | URL Link | Target & Purpose |
-| :--- | :--- | :--- |
-| 🌐 **Local Area Network (LAN)** | **[http://10.164.1.1:3000/](http://10.164.1.1:3000/)** | Live active network address for mobile, tablet, and cross-device testing over Wi-Fi |
-| 💻 **Localhost Host** | **[http://localhost:3000/](http://localhost:3000/)** | Local machine development preview (`http://127.0.0.1:3000/`) |
-| 🐙 **GitHub Repository** | **[bhavanasbhavanas416-rgb/verimail-auth-console](https://github.com/bhavanasbhavanas416-rgb/verimail-auth-console)** | Official project repository |
-| 👤 **GitHub Developer Profile** | **[https://github.com/bhavanasbhavanas416-rgb](https://github.com/bhavanasbhavanas416-rgb)** | Profile and open-source contributions by Bhavana |
+| Access Type | URL Link | Port & Mode | Target & Purpose |
+| :--- | :--- | :--- | :--- |
+| 🚀 **Production Server** | **[http://localhost:5000/](http://localhost:5000/)** | **Port 5000 (Express)** | Optimized production bundle server with SPA routing |
+| 🌐 **Production LAN Access**| **[http://10.164.1.1:5000/](http://10.164.1.1:5000/)** | **Port 5000 (Network)** | Cross-device testing for mobile & tablets on the local network |
+| 💻 **Development Server** | **[http://localhost:3000/](http://localhost:3000/)** | **Port 3000 (Vite)** | Live development server with Hot Module Replacement (HMR) |
+| 📱 **Development LAN** | **[http://10.164.1.1:3000/](http://10.164.1.1:3000/)** | **Port 3000 (Network)** | Dev network access across Wi-Fi interfaces |
+| 🐙 **GitHub Repository** | **[bhavanasbhavanas416-rgb/verimail-auth-console](https://github.com/bhavanasbhavanas416-rgb/verimail-auth-console)** | GitHub | Official code & documentation repository |
+| 👤 **GitHub Developer Profile** | **[https://github.com/bhavanasbhavanas416-rgb](https://github.com/bhavanasbhavanas416-rgb)** | Profile | Developer profile and open-source contributions by Bhavana |
 
-> 📱 **Network Access Tip**: Any device connected to the same Wi-Fi network (such as smartphones or test laptops) can immediately open **[http://10.164.1.1:3000/](http://10.164.1.1:3000/)** to interact with the responsive interface and verify emails.
+> 💡 **Quick Launch on Port 5000**:
+> ```bash
+> npm run build
+> npm run start   # Launches http://localhost:5000/
+> ```
 
 ---
 
 ## 📖 About the Project
 
 ### 🎯 Purpose & Problem Statement
-Modern applications frequently struggle with complex authentication workflows, particularly around **email verification state sync**, **secure primary email migrations**, and **out-of-band email link processing**. Traditional setups either fail to throttle verification requests, lock users out when changing primary emails, or require cumbersome backend mock setups for local development.
+Modern web applications frequently encounter authentication friction, particularly around **email verification state sync**, **secure primary email migrations**, and **out-of-band email link processing**. Traditional setups either fail to throttle verification requests, lock users out when modifying their primary email, or require cumbersome backend mock setups for local development.
 
 **VeriMail Identity & Auth Console** resolves these challenges by providing:
 1. **Dual-Engine Architecture**: Seamless switching between live Firebase Authentication and a zero-config interactive Sandbox mode.
 2. **Reliable Verification Polling**: Automatic status synchronizer that polls `reload(auth.currentUser)` to immediately reflect email verification without manual page refreshes.
 3. **Safe Primary Email Transitions**: Implementation of Firebase's recommended `verifyBeforeUpdateEmail` pattern, ensuring old emails remain active until the new address is cryptographically verified.
 4. **Action Link Simulator**: Integrated engine for decoding, inspecting, and applying Firebase Out-of-Band (`oobCode`) tokens for password resets, email verification, and recovery.
+5. **Universal Port Flexibility**: Support for running as a lightweight Vite development server (port 3000) or an enterprise Express production server (port 5000).
 
 ---
 
@@ -50,15 +59,17 @@ sequenceDiagram
     autonumber
     actor User as User / Client Device
     participant Console as VeriMail Web App (React 19)
+    participant Server as Express Server (Port 5000)
     participant Auth as Firebase Auth SDK (v12)
     participant Outbox as Action Dispatcher / Outbox
 
+    Note over User,Server: Access app at http://localhost:5000/ or http://localhost:3000/
     User->>Console: Register (Email + Password)
     Console->>Auth: createUserWithEmailAndPassword()
     Auth-->>Console: UserCredential (emailVerified: false)
     Console->>Auth: sendEmailVerification(currentUser)
     Auth->>Outbox: Generate Action URL (?mode=verifyEmail&oobCode=XYZ)
-    Note over User,Console: Link accessible via http://10.164.1.1:3000/ or simulated outbox
+    Note over User,Console: Link accessible via http://localhost:5000/ or simulated outbox
     User->>Console: Click Action Link or Paste oobCode
     Console->>Auth: applyActionCode("XYZ")
     Auth-->>Console: Code Applied & Verified
@@ -115,7 +126,38 @@ sequenceDiagram
 Below is the complete source code for each primary component and module in the application.
 
 <details>
-<summary><b>📄 1. <code>src/types/auth.ts</code> (Domain Models & TypeScript Interfaces)</b></summary>
+<summary><b>📄 1. <code>server.js</code> (Production Express Server on Port 5000)</b></summary>
+
+```javascript
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || '0.0.0.0';
+
+// Serve production static bundle from dist
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// SPA fallback: send all navigation requests to index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.listen(Number(PORT), HOST, () => {
+  console.log(`VeriMail Identity & Auth Console running at:`);
+  console.log(`- Localhost: http://localhost:${PORT}/`);
+  console.log(`- Network:   http://10.164.1.1:${PORT}/`);
+});
+```
+</details>
+
+<details>
+<summary><b>📄 2. <code>src/types/auth.ts</code> (Domain Models & TypeScript Interfaces)</b></summary>
 
 ```typescript
 export type NavTab =
@@ -182,7 +224,7 @@ export interface EmailPreferences {
 </details>
 
 <details>
-<summary><b>📄 2. <code>src/lib/firebase.ts</code> (Firebase Client SDK & Error Parser)</b></summary>
+<summary><b>📄 3. <code>src/lib/firebase.ts</code> (Firebase Client SDK & Error Parser)</b></summary>
 
 ```typescript
 import { initializeApp, getApps, getApp } from 'firebase/app';
@@ -382,7 +424,7 @@ export function parseFirebaseError(error: unknown): ParsedFirebaseError {
 </details>
 
 <details>
-<summary><b>📄 3. <code>src/components/ActionHandlerView.tsx</code> (Out-of-Band Code Action Runner)</b></summary>
+<summary><b>📄 4. <code>src/components/ActionHandlerView.tsx</code> (Out-of-Band Code Action Runner)</b></summary>
 
 ```typescript
 import React, { useState } from 'react';
@@ -513,92 +555,6 @@ export const ActionHandlerView: React.FC<ActionHandlerViewProps> = ({
 </details>
 
 <details>
-<summary><b>📄 4. <code>src/components/VerificationCenterView.tsx</code> (Verification Center)</b></summary>
-
-```typescript
-import React, { useState, useEffect } from 'react';
-import { CheckCircle2, Clock, RefreshCw, Send, MailCheck, ExternalLink, Copy, Check } from 'lucide-react';
-import { firebaseConfig } from '../lib/firebase';
-import type { UnifiedUser, DispatchedEmail, EngineMode } from '../types/auth';
-
-interface VerificationCenterViewProps {
-  user: UnifiedUser | null;
-  engineMode: EngineMode;
-  resendCooldown: number;
-  isBusy: boolean;
-  outbox: DispatchedEmail[];
-  onSendVerification: (customContinueUrl?: string) => Promise<void>;
-  onReloadVerificationStatus: () => Promise<void>;
-  onSimulateVerifyCurrentUser: () => Promise<void>;
-  onNavigateToAuth: () => void;
-  onNavigateToEmailManagement: () => void;
-  onNavigateToActionHandler: () => void;
-}
-
-export const VerificationCenterView: React.FC<VerificationCenterViewProps> = ({
-  user,
-  engineMode,
-  resendCooldown,
-  isBusy,
-  outbox,
-  onSendVerification,
-  onReloadVerificationStatus,
-  onSimulateVerifyCurrentUser,
-}) => {
-  const [autoPoll, setAutoPoll] = useState<boolean>(false);
-  const [pollCountdown, setPollCountdown] = useState<number>(5);
-
-  useEffect(() => {
-    if (!autoPoll || !user || user.emailVerified) return;
-    const timer = setInterval(() => {
-      setPollCountdown((prev) => {
-        if (prev <= 1) {
-          onReloadVerificationStatus();
-          return 5;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [autoPoll, user, onReloadVerificationStatus]);
-
-  return (
-    <div className="space-y-6">
-      <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <div className="flex items-center justify-between pb-4 border-b border-slate-200">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-900">Email Verification Center</h2>
-            <p className="text-sm text-slate-600">Inspect real-time badge state and trigger throttled verification emails.</p>
-          </div>
-          <span className={`px-3 py-1 text-xs font-semibold rounded-full ${user?.emailVerified ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}`}>
-            {user?.emailVerified ? '✓ Email Verified' : '⚠ Verification Pending'}
-          </span>
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <button
-            onClick={() => onSendVerification()}
-            disabled={isBusy || resendCooldown > 0}
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50"
-          >
-            {resendCooldown > 0 ? `Resend in ${resendCooldown}s` : 'Send Verification Email'}
-          </button>
-          <button
-            onClick={() => onReloadVerificationStatus()}
-            disabled={isBusy}
-            className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200"
-          >
-            Check Status Now
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-```
-</details>
-
-<details>
 <summary><b>📄 5. <code>package.json</code> & <code>vite.config.ts</code> (Build & Dependencies)</b></summary>
 
 ```json
@@ -609,9 +565,12 @@ export const VerificationCenterView: React.FC<VerificationCenterViewProps> = ({
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
+    "dev:5000": "vite --port=5000 --host=0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview",
-    "clean": "rm -rf dist server.js",
+    "start": "node server.js",
+    "serve": "node server.js",
+    "preview": "vite preview --port 5000 --host 0.0.0.0",
+    "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
@@ -715,26 +674,28 @@ cp .env.example .env
 
 ```env
 GEMINI_API_KEY="your-gemini-api-key"
-APP_URL="http://localhost:3000"
+APP_URL="http://localhost:5000"
 ```
 
-### 4. Launch Development Server
+### 4. Running the Application
+
+#### Option A: Run Production Server on Port 5000 (Recommended)
+```bash
+npm run build
+npm run start
+```
+> Console is live at: **[http://localhost:5000/](http://localhost:5000/)** (and `http://10.164.1.1:5000/`)
+
+#### Option B: Run Vite Development Server on Port 3000
 ```bash
 npm run dev
 ```
+> Dev console is live at: **[http://localhost:3000/](http://localhost:3000/)** (and `http://10.164.1.1:3000/`)
 
-The server listens across all interfaces:
-```text
-  VITE v8.3.0  ready in 380 ms
-
-  ➜  Local:   http://localhost:3000/
-  ➜  Network: http://10.164.1.1:3000/
-  ➜  press h + enter to show help
+#### Option C: Run Vite Development Server directly on Port 5000
+```bash
+npm run dev:5000
 ```
-
-### 5. Access the Platform
-- **Local Machine**: **[http://localhost:3000/](http://localhost:3000/)**
-- **LAN / Mobile Devices**: **[http://10.164.1.1:3000/](http://10.164.1.1:3000/)**
 
 ---
 
